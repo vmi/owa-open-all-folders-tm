@@ -42,7 +42,7 @@
     let opened = 0;
     let closedList = document.querySelectorAll('i[data-icon-name="ChevronRightMed"]');
     closedList.forEach(elem => {
-      let tree = elem.parentElement.parentElement.parentElement;
+      let tree = elem.parentElement.parentElement.parentElement.parentElement;
       let title = tree.title;
       if (title && !title.startsWith("Personal Archive - ")) {
         elem.click();
