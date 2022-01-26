@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Open All Folders
 // @namespace    http://vmix.dev/
-// @version      1.1
+// @version      1.2
 // @description  Add "Open All Folders" button on OWA for Tampermonkey.
 // @author       vmi@nifty.com
 // @match        https://outlook.office.com/mail/*
@@ -40,7 +40,7 @@
 
   function __oaf_openAllFolders(retries = 0) {
     let opened = 0;
-    let closedList = document.querySelectorAll('i[data-icon-name="ChevronRightMed"]');
+    let closedList = document.querySelectorAll('i[data-icon-name="ChevronRightRegular"]');
     closedList.forEach(elem => {
       let tree = elem.parentElement.parentElement.parentElement.parentElement;
       let title = tree.title;
@@ -84,7 +84,7 @@
     const b2 = document.createElement('span');
     const b3 = document.createElement('span');
     const b4 = document.createElement('span');
-    b4.innerText = 'Open All Folders';
+    b4.innerText = 'All Folders';
     b4.className = nm4.className;
     b4.addEventListener('click', __oaf_clickOpenAllFoldersButton, false);
     b3.className = nm3.className;
@@ -94,6 +94,7 @@
     b2.appendChild(b3);
     b1.appendChild(b2);
     div.appendChild(b1);
+    console.log('Succeeded in adding "Open All Folders" button.');
     return true;
   }
 
@@ -108,5 +109,5 @@
     }
   }
 
-  window.addEventListener('load', __oaf_addOpenAllFoldersButton, false);
+  __oaf_addOpenAllFoldersButton();
 })();
